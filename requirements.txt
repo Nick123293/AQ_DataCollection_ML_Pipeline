@@ -10,5 +10,4 @@ retry-requests==2.0.0
 openmeteo-requests==1.7.5
 
 
-json
 osmnx

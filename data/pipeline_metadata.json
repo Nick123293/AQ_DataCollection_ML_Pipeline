@@ -1,0 +1,2551 @@
+[
+  {
+    "run_id": "20260312_205901",
+    "status": "success",
+    "started_at": "2026-03-12T20:59:01.243957",
+    "finished_at": "2026-03-12T20:59:05.357974",
+    "duration_seconds": 4.11,
+    "parameters": {
+      "cities_raw": "Houston,TX",
+      "start_date": "2026-02-23",
+      "end_date": "2026-02-23",
+      "timezone": "America/Chicago",
+      "batch_size_requested": 50,
+      "zip_traffic_file": null,
+      "uszips_file": "uszips.csv",
+      "out_dir": "data",
+      "out_prefix": "test_diag"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\test_diag_air_quality_hourly_20260312_205901.csv",
+        "row_count": 2328,
+        "size_bytes": 290709,
+        "variable_count": 18,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth",
+          "ammonia",
+          "alder_pollen",
+          "birch_pollen",
+          "grass_pollen",
+          "mugwort_pollen",
+          "olive_pollen",
+          "ragweed_pollen"
+        ],
+        "api_url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\test_diag_weather_hourly_20260312_205901.csv",
+        "row_count": 2328,
+        "size_bytes": 328173,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260312_210107",
+    "status": "success",
+    "started_at": "2026-03-12T21:01:07.136153",
+    "finished_at": "2026-03-12T21:01:12.781337",
+    "duration_seconds": 5.65,
+    "parameters": {
+      "cities_raw": "Houston,TX",
+      "start_date": "2026-02-23",
+      "end_date": "2026-03-01",
+      "timezone": "America/Chicago",
+      "batch_size_requested": 50,
+      "zip_traffic_file": null,
+      "uszips_file": "uszips.csv",
+      "out_dir": "data",
+      "out_prefix": "feb_4thweek"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\feb_4thweek_air_quality_hourly_20260312_210107.csv",
+        "row_count": 16296,
+        "size_bytes": 2048817,
+        "variable_count": 18,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth",
+          "ammonia",
+          "alder_pollen",
+          "birch_pollen",
+          "grass_pollen",
+          "mugwort_pollen",
+          "olive_pollen",
+          "ragweed_pollen"
+        ],
+        "api_url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\feb_4thweek_weather_hourly_20260312_210107.csv",
+        "row_count": 16296,
+        "size_bytes": 2314429,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260314_191009",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-03-14T19:10:09.786128",
+    "finished_at": "2026-03-14T19:10:16.675744",
+    "duration_seconds": 6.89,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-02",
+      "end_date": "2026-03-09",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "multi"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\multi_air_quality_hourly_20260314_191009.csv",
+        "row_count": 18624,
+        "size_bytes": 2336560,
+        "variable_count": 18,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth",
+          "ammonia",
+          "alder_pollen",
+          "birch_pollen",
+          "grass_pollen",
+          "mugwort_pollen",
+          "olive_pollen",
+          "ragweed_pollen"
+        ],
+        "api_url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\multi_weather_hourly_20260314_191009.csv",
+        "row_count": 18624,
+        "size_bytes": 2666065,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260314_204701",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-03-14T20:47:01.962321",
+    "finished_at": "2026-03-14T20:47:04.540771",
+    "duration_seconds": 2.58,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-13",
+      "end_date": "2026-03-14",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "aq"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\aq_air_quality_hourly_20260314_204701.csv",
+        "row_count": 4656,
+        "size_bytes": 552699,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\aq_weather_hourly_20260314_204701.csv",
+        "row_count": 4656,
+        "size_bytes": 653844,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://api.open-meteo.com/v1/forecast",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260318_050006",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-03-18T05:00:06.006527",
+    "finished_at": "2026-03-18T05:00:38.090805",
+    "duration_seconds": 32.08,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-17",
+      "end_date": "2026-03-18",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_17_18"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_17_18_air_quality_hourly_20260318_050006.csv",
+        "row_count": 4656,
+        "size_bytes": 549820,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_17_18_weather_hourly_20260318_050006.csv",
+        "row_count": 4656,
+        "size_bytes": 650861,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://api.open-meteo.com/v1/forecast",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_115118",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T11:51:18.232480",
+    "finished_at": "2026-04-01T11:51:19.407717",
+    "duration_seconds": 1.18,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_10"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [],
+    "error": "failed to request 'https://customer-air-quality-api.open-meteo.com/v1/air-quality&apikey=3HO8nE2N8vCbAKm5': 404 Client Error: Not Found for url: https://customer-air-quality-api.open-meteo.com/v1/air-quality&apikey=3HO8nE2N8vCbAKm5?latitude=29.75635&latitude=29.74961&latitude=29.72477&latitude=29.71824&latitude=29.74086&latitude=29.77152&latitude=29.79856&latitude=29.79499&latitude=29.75368&latitude=29.743&latitude=29.71904&latitude=29.79516&latitude=29.98025&latitude=29.76485&latitude=29.86147&latitude=29.69153&latitude=29.82703&latitude=29.75318&latitude=29.76842&latitude=29.69713&latitude=29.8306&latitude=29.7216&latitude=29.77073&latitude=29.68584&latitude=29.80013&latitude=29.73919&latitude=29.82471&latitude=29.76382&latitude=29.70597&latitude=29.65434&latitude=29.96523&latitude=29.66801&latitude=29.61522&latitude=29.65269&latitude=29.70119&latitude=29.8918&latitude=29.91906&latitude=29.90923&latitude=29.87539&latitude=29.86203&latitude=29.74125&latitude=29.8112&latitude=29.89808&latitude=29.63634&latitude=29.73438&latitude=29.60843&latitude=29.62154&latitude=29.83417&latitude=29.90286&latitude=29.65586&longitude=-95.36538&longitude=-95.34521&longitude=-95.36498&longitude=-95.42413&longitude=-95.39126&longitude=-95.40919&longitude=-95.41766&longitude=-95.36758&longitude=-95.35987&longitude=-95.30785&longitude=-95.27449&longitude=-95.23895&longitude=-95.46363&longitude=-95.17216&longitude=-95.29951&longitude=-95.25093&longitude=-95.42571&longitude=-95.41212&longitude=-95.30878&longitude=-95.35751&longitude=-95.3768&longitude=-95.31827&longitude=-95.50869&longitude=-95.43512&longitude=-95.32934&longitude=-95.44609&longitude=-95.28668&longitude=-95.26326&longitude=-95.40253&longitude=-95.54622&longitude=-95.34004&longitude=-95.33801&longitude=-95.19237&longitude=-95.47688&longitude=-95.53659&longitude=-95.39438&longitude=-95.44121&longitude=-95.34137&longitude=-95.52861&longitude=-95.58187&longitude=-95.56015&longitude=-95.57981&longitude=-95.17685&longitude=-95.43279&longitude=-95.43301&longitude=-95.38662&longitude=-95.32986&longitude=-95.14827&longitude=-95.27013&longitude=-95.38023&hourly=us_aqi&hourly=pm10&hourly=pm2_5&hourly=carbon_monoxide&hourly=nitrogen_dioxide&hourly=sulphur_dioxide&hourly=ozone&hourly=uv_index_clear_sky&hourly=uv_index&hourly=dust&hourly=aerosol_optical_depth&start_date=2026-03-10&end_date=2026-03-10&timezone=America%2FChicago&format=flatbuffers"
+  },
+  {
+    "run_id": "20260401_115216",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T11:52:16.356474",
+    "finished_at": "2026-04-01T11:52:17.539256",
+    "duration_seconds": 1.18,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_10"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [],
+    "error": "failed to request 'https://customer-air-quality-api.open-meteo.com/v1/air-quality&apikey=3HO8nE2N8vCbAKm5': 404 Client Error: Not Found for url: https://customer-air-quality-api.open-meteo.com/v1/air-quality&apikey=3HO8nE2N8vCbAKm5?latitude=29.75635&latitude=29.74961&latitude=29.72477&latitude=29.71824&latitude=29.74086&latitude=29.77152&latitude=29.79856&latitude=29.79499&latitude=29.75368&latitude=29.743&latitude=29.71904&latitude=29.79516&latitude=29.98025&latitude=29.76485&latitude=29.86147&latitude=29.69153&latitude=29.82703&latitude=29.75318&latitude=29.76842&latitude=29.69713&latitude=29.8306&latitude=29.7216&latitude=29.77073&latitude=29.68584&latitude=29.80013&latitude=29.73919&latitude=29.82471&latitude=29.76382&latitude=29.70597&latitude=29.65434&latitude=29.96523&latitude=29.66801&latitude=29.61522&latitude=29.65269&latitude=29.70119&latitude=29.8918&latitude=29.91906&latitude=29.90923&latitude=29.87539&latitude=29.86203&latitude=29.74125&latitude=29.8112&latitude=29.89808&latitude=29.63634&latitude=29.73438&latitude=29.60843&latitude=29.62154&latitude=29.83417&latitude=29.90286&latitude=29.65586&longitude=-95.36538&longitude=-95.34521&longitude=-95.36498&longitude=-95.42413&longitude=-95.39126&longitude=-95.40919&longitude=-95.41766&longitude=-95.36758&longitude=-95.35987&longitude=-95.30785&longitude=-95.27449&longitude=-95.23895&longitude=-95.46363&longitude=-95.17216&longitude=-95.29951&longitude=-95.25093&longitude=-95.42571&longitude=-95.41212&longitude=-95.30878&longitude=-95.35751&longitude=-95.3768&longitude=-95.31827&longitude=-95.50869&longitude=-95.43512&longitude=-95.32934&longitude=-95.44609&longitude=-95.28668&longitude=-95.26326&longitude=-95.40253&longitude=-95.54622&longitude=-95.34004&longitude=-95.33801&longitude=-95.19237&longitude=-95.47688&longitude=-95.53659&longitude=-95.39438&longitude=-95.44121&longitude=-95.34137&longitude=-95.52861&longitude=-95.58187&longitude=-95.56015&longitude=-95.57981&longitude=-95.17685&longitude=-95.43279&longitude=-95.43301&longitude=-95.38662&longitude=-95.32986&longitude=-95.14827&longitude=-95.27013&longitude=-95.38023&hourly=us_aqi&hourly=pm10&hourly=pm2_5&hourly=carbon_monoxide&hourly=nitrogen_dioxide&hourly=sulphur_dioxide&hourly=ozone&hourly=uv_index_clear_sky&hourly=uv_index&hourly=dust&hourly=aerosol_optical_depth&start_date=2026-03-10&end_date=2026-03-10&timezone=America%2FChicago&format=flatbuffers"
+  },
+  {
+    "run_id": "20260401_115248",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T11:52:48.071923",
+    "finished_at": "2026-04-01T11:52:49.839928",
+    "duration_seconds": 1.77,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_10"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_10_air_quality_hourly_20260401_115248.csv",
+        "row_count": 2328,
+        "size_bytes": 275010,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      }
+    ],
+    "error": "failed to request 'https://customer-api.open-meteo.com/v1/archive?apikey=3HO8nE2N8vCbAKm5': 404 Client Error: Not Found for url: https://customer-api.open-meteo.com/v1/archive?apikey=3HO8nE2N8vCbAKm5&latitude=29.75635&latitude=29.74961&latitude=29.72477&latitude=29.71824&latitude=29.74086&latitude=29.77152&latitude=29.79856&latitude=29.79499&latitude=29.75368&latitude=29.743&latitude=29.71904&latitude=29.79516&latitude=29.98025&latitude=29.76485&latitude=29.86147&latitude=29.69153&latitude=29.82703&latitude=29.75318&latitude=29.76842&latitude=29.69713&latitude=29.8306&latitude=29.7216&latitude=29.77073&latitude=29.68584&latitude=29.80013&latitude=29.73919&latitude=29.82471&latitude=29.76382&latitude=29.70597&latitude=29.65434&latitude=29.96523&latitude=29.66801&latitude=29.61522&latitude=29.65269&latitude=29.70119&latitude=29.8918&latitude=29.91906&latitude=29.90923&latitude=29.87539&latitude=29.86203&latitude=29.74125&latitude=29.8112&latitude=29.89808&latitude=29.63634&latitude=29.73438&latitude=29.60843&latitude=29.62154&latitude=29.83417&latitude=29.90286&latitude=29.65586&longitude=-95.36538&longitude=-95.34521&longitude=-95.36498&longitude=-95.42413&longitude=-95.39126&longitude=-95.40919&longitude=-95.41766&longitude=-95.36758&longitude=-95.35987&longitude=-95.30785&longitude=-95.27449&longitude=-95.23895&longitude=-95.46363&longitude=-95.17216&longitude=-95.29951&longitude=-95.25093&longitude=-95.42571&longitude=-95.41212&longitude=-95.30878&longitude=-95.35751&longitude=-95.3768&longitude=-95.31827&longitude=-95.50869&longitude=-95.43512&longitude=-95.32934&longitude=-95.44609&longitude=-95.28668&longitude=-95.26326&longitude=-95.40253&longitude=-95.54622&longitude=-95.34004&longitude=-95.33801&longitude=-95.19237&longitude=-95.47688&longitude=-95.53659&longitude=-95.39438&longitude=-95.44121&longitude=-95.34137&longitude=-95.52861&longitude=-95.58187&longitude=-95.56015&longitude=-95.57981&longitude=-95.17685&longitude=-95.43279&longitude=-95.43301&longitude=-95.38662&longitude=-95.32986&longitude=-95.14827&longitude=-95.27013&longitude=-95.38023&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=precipitation&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=shortwave_radiation&hourly=diffuse_radiation&hourly=cloud_cover&start_date=2026-03-10&end_date=2026-03-10&timezone=America%2FChicago&format=flatbuffers"
+  },
+  {
+    "run_id": "20260401_115506",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T11:55:06.338040",
+    "finished_at": "2026-04-01T11:55:07.352455",
+    "duration_seconds": 1.01,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_10"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_10_air_quality_hourly_20260401_115506.csv",
+        "row_count": 2328,
+        "size_bytes": 275010,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      }
+    ],
+    "error": "failed to request 'https://customer-api.open-meteo.com/v1/archive?apikey=3HO8nE2N8vCbAKm5': 404 Client Error: Not Found for url: https://customer-api.open-meteo.com/v1/archive?apikey=3HO8nE2N8vCbAKm5&latitude=29.75635&latitude=29.74961&latitude=29.72477&latitude=29.71824&latitude=29.74086&latitude=29.77152&latitude=29.79856&latitude=29.79499&latitude=29.75368&latitude=29.743&latitude=29.71904&latitude=29.79516&latitude=29.98025&latitude=29.76485&latitude=29.86147&latitude=29.69153&latitude=29.82703&latitude=29.75318&latitude=29.76842&latitude=29.69713&latitude=29.8306&latitude=29.7216&latitude=29.77073&latitude=29.68584&latitude=29.80013&latitude=29.73919&latitude=29.82471&latitude=29.76382&latitude=29.70597&latitude=29.65434&latitude=29.96523&latitude=29.66801&latitude=29.61522&latitude=29.65269&latitude=29.70119&latitude=29.8918&latitude=29.91906&latitude=29.90923&latitude=29.87539&latitude=29.86203&latitude=29.74125&latitude=29.8112&latitude=29.89808&latitude=29.63634&latitude=29.73438&latitude=29.60843&latitude=29.62154&latitude=29.83417&latitude=29.90286&latitude=29.65586&longitude=-95.36538&longitude=-95.34521&longitude=-95.36498&longitude=-95.42413&longitude=-95.39126&longitude=-95.40919&longitude=-95.41766&longitude=-95.36758&longitude=-95.35987&longitude=-95.30785&longitude=-95.27449&longitude=-95.23895&longitude=-95.46363&longitude=-95.17216&longitude=-95.29951&longitude=-95.25093&longitude=-95.42571&longitude=-95.41212&longitude=-95.30878&longitude=-95.35751&longitude=-95.3768&longitude=-95.31827&longitude=-95.50869&longitude=-95.43512&longitude=-95.32934&longitude=-95.44609&longitude=-95.28668&longitude=-95.26326&longitude=-95.40253&longitude=-95.54622&longitude=-95.34004&longitude=-95.33801&longitude=-95.19237&longitude=-95.47688&longitude=-95.53659&longitude=-95.39438&longitude=-95.44121&longitude=-95.34137&longitude=-95.52861&longitude=-95.58187&longitude=-95.56015&longitude=-95.57981&longitude=-95.17685&longitude=-95.43279&longitude=-95.43301&longitude=-95.38662&longitude=-95.32986&longitude=-95.14827&longitude=-95.27013&longitude=-95.38023&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=precipitation&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=shortwave_radiation&hourly=diffuse_radiation&hourly=cloud_cover&start_date=2026-03-10&end_date=2026-03-10&timezone=America%2FChicago&format=flatbuffers"
+  },
+  {
+    "run_id": "20260401_120321",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T12:03:21.039657",
+    "finished_at": "2026-04-01T12:03:22.005230",
+    "duration_seconds": 0.97,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_10"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_10_air_quality_hourly_20260401_120321.csv",
+        "row_count": 2328,
+        "size_bytes": 275010,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      }
+    ],
+    "error": "failed to request 'https://customer-api.open-meteo.com/v1/archive?apikey=3HO8nE2N8vCbAKm5': 404 Client Error: Not Found for url: https://customer-api.open-meteo.com/v1/archive?apikey=3HO8nE2N8vCbAKm5&latitude=29.75635&latitude=29.74961&latitude=29.72477&latitude=29.71824&latitude=29.74086&latitude=29.77152&latitude=29.79856&latitude=29.79499&latitude=29.75368&latitude=29.743&latitude=29.71904&latitude=29.79516&latitude=29.98025&latitude=29.76485&latitude=29.86147&latitude=29.69153&latitude=29.82703&latitude=29.75318&latitude=29.76842&latitude=29.69713&latitude=29.8306&latitude=29.7216&latitude=29.77073&latitude=29.68584&latitude=29.80013&latitude=29.73919&latitude=29.82471&latitude=29.76382&latitude=29.70597&latitude=29.65434&latitude=29.96523&latitude=29.66801&latitude=29.61522&latitude=29.65269&latitude=29.70119&latitude=29.8918&latitude=29.91906&latitude=29.90923&latitude=29.87539&latitude=29.86203&latitude=29.74125&latitude=29.8112&latitude=29.89808&latitude=29.63634&latitude=29.73438&latitude=29.60843&latitude=29.62154&latitude=29.83417&latitude=29.90286&latitude=29.65586&longitude=-95.36538&longitude=-95.34521&longitude=-95.36498&longitude=-95.42413&longitude=-95.39126&longitude=-95.40919&longitude=-95.41766&longitude=-95.36758&longitude=-95.35987&longitude=-95.30785&longitude=-95.27449&longitude=-95.23895&longitude=-95.46363&longitude=-95.17216&longitude=-95.29951&longitude=-95.25093&longitude=-95.42571&longitude=-95.41212&longitude=-95.30878&longitude=-95.35751&longitude=-95.3768&longitude=-95.31827&longitude=-95.50869&longitude=-95.43512&longitude=-95.32934&longitude=-95.44609&longitude=-95.28668&longitude=-95.26326&longitude=-95.40253&longitude=-95.54622&longitude=-95.34004&longitude=-95.33801&longitude=-95.19237&longitude=-95.47688&longitude=-95.53659&longitude=-95.39438&longitude=-95.44121&longitude=-95.34137&longitude=-95.52861&longitude=-95.58187&longitude=-95.56015&longitude=-95.57981&longitude=-95.17685&longitude=-95.43279&longitude=-95.43301&longitude=-95.38662&longitude=-95.32986&longitude=-95.14827&longitude=-95.27013&longitude=-95.38023&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=precipitation&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=shortwave_radiation&hourly=diffuse_radiation&hourly=cloud_cover&start_date=2026-03-10&end_date=2026-03-10&timezone=America%2FChicago&format=flatbuffers"
+  },
+  {
+    "run_id": "20260401_120422",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T12:04:22.874182",
+    "finished_at": "2026-04-01T12:04:23.836311",
+    "duration_seconds": 0.96,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_10"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_10_air_quality_hourly_20260401_120422.csv",
+        "row_count": 2328,
+        "size_bytes": 275010,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      }
+    ],
+    "error": "failed to request 'https://customer-api.open-meteo.com/v1/archive?apikey=3HO8nE2N8vCbAKm5': 404 Client Error: Not Found for url: https://customer-api.open-meteo.com/v1/archive?apikey=3HO8nE2N8vCbAKm5&latitude=29.75635&latitude=29.74961&latitude=29.72477&latitude=29.71824&latitude=29.74086&latitude=29.77152&latitude=29.79856&latitude=29.79499&latitude=29.75368&latitude=29.743&latitude=29.71904&latitude=29.79516&latitude=29.98025&latitude=29.76485&latitude=29.86147&latitude=29.69153&latitude=29.82703&latitude=29.75318&latitude=29.76842&latitude=29.69713&latitude=29.8306&latitude=29.7216&latitude=29.77073&latitude=29.68584&latitude=29.80013&latitude=29.73919&latitude=29.82471&latitude=29.76382&latitude=29.70597&latitude=29.65434&latitude=29.96523&latitude=29.66801&latitude=29.61522&latitude=29.65269&latitude=29.70119&latitude=29.8918&latitude=29.91906&latitude=29.90923&latitude=29.87539&latitude=29.86203&latitude=29.74125&latitude=29.8112&latitude=29.89808&latitude=29.63634&latitude=29.73438&latitude=29.60843&latitude=29.62154&latitude=29.83417&latitude=29.90286&latitude=29.65586&longitude=-95.36538&longitude=-95.34521&longitude=-95.36498&longitude=-95.42413&longitude=-95.39126&longitude=-95.40919&longitude=-95.41766&longitude=-95.36758&longitude=-95.35987&longitude=-95.30785&longitude=-95.27449&longitude=-95.23895&longitude=-95.46363&longitude=-95.17216&longitude=-95.29951&longitude=-95.25093&longitude=-95.42571&longitude=-95.41212&longitude=-95.30878&longitude=-95.35751&longitude=-95.3768&longitude=-95.31827&longitude=-95.50869&longitude=-95.43512&longitude=-95.32934&longitude=-95.44609&longitude=-95.28668&longitude=-95.26326&longitude=-95.40253&longitude=-95.54622&longitude=-95.34004&longitude=-95.33801&longitude=-95.19237&longitude=-95.47688&longitude=-95.53659&longitude=-95.39438&longitude=-95.44121&longitude=-95.34137&longitude=-95.52861&longitude=-95.58187&longitude=-95.56015&longitude=-95.57981&longitude=-95.17685&longitude=-95.43279&longitude=-95.43301&longitude=-95.38662&longitude=-95.32986&longitude=-95.14827&longitude=-95.27013&longitude=-95.38023&hourly=temperature_2m&hourly=relative_humidity_2m&hourly=precipitation&hourly=wind_speed_10m&hourly=wind_speed_100m&hourly=wind_direction_10m&hourly=wind_direction_100m&hourly=wind_gusts_10m&hourly=shortwave_radiation&hourly=diffuse_radiation&hourly=cloud_cover&start_date=2026-03-10&end_date=2026-03-10&timezone=America%2FChicago&format=flatbuffers"
+  },
+  {
+    "run_id": "20260401_120609",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:06:09.675765",
+    "finished_at": "2026-04-01T12:06:11.662300",
+    "duration_seconds": 1.99,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_10"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_10_air_quality_hourly_20260401_120609.csv",
+        "row_count": 2328,
+        "size_bytes": 275010,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_10_weather_hourly_20260401_120609.csv",
+        "row_count": 2328,
+        "size_bytes": 334596,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120612",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:06:12.750153",
+    "finished_at": "2026-04-01T12:06:15.339082",
+    "duration_seconds": 2.59,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-11",
+      "end_date": "2026-03-11",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_11"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_11_air_quality_hourly_20260401_120612.csv",
+        "row_count": 2328,
+        "size_bytes": 273912,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_11_weather_hourly_20260401_120612.csv",
+        "row_count": 2328,
+        "size_bytes": 333070,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120616",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:06:16.475885",
+    "finished_at": "2026-04-01T12:06:19.998859",
+    "duration_seconds": 3.52,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-12",
+      "end_date": "2026-03-12",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_12"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_12_air_quality_hourly_20260401_120616.csv",
+        "row_count": 2328,
+        "size_bytes": 274240,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_12_weather_hourly_20260401_120616.csv",
+        "row_count": 2328,
+        "size_bytes": 328119,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120621",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:06:21.126147",
+    "finished_at": "2026-04-01T12:06:23.723585",
+    "duration_seconds": 2.6,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-13",
+      "end_date": "2026-03-13",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_13"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_13_air_quality_hourly_20260401_120621.csv",
+        "row_count": 2328,
+        "size_bytes": 277548,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_13_weather_hourly_20260401_120621.csv",
+        "row_count": 2328,
+        "size_bytes": 328008,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120624",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:06:24.809335",
+    "finished_at": "2026-04-01T12:06:27.391263",
+    "duration_seconds": 2.58,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-14",
+      "end_date": "2026-03-14",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_14"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_14_air_quality_hourly_20260401_120624.csv",
+        "row_count": 2328,
+        "size_bytes": 275398,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_14_weather_hourly_20260401_120624.csv",
+        "row_count": 2328,
+        "size_bytes": 330997,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120628",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:06:28.506622",
+    "finished_at": "2026-04-01T12:06:33.274098",
+    "duration_seconds": 4.77,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-15",
+      "end_date": "2026-03-15",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_15"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_15_air_quality_hourly_20260401_120628.csv",
+        "row_count": 2328,
+        "size_bytes": 273811,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_15_weather_hourly_20260401_120628.csv",
+        "row_count": 2328,
+        "size_bytes": 332553,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120634",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T12:06:34.389563",
+    "finished_at": "2026-04-01T12:06:36.338499",
+    "duration_seconds": 1.95,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-16",
+      "end_date": "2026-03-16",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_16"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_16_air_quality_hourly_20260401_120634.csv",
+        "row_count": 2328,
+        "size_bytes": 273100,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      }
+    ],
+    "error": "failed to request 'https://archive-api.open-meteo.com/v1/archive': {'error': True, 'reason': 'Minutely API request limit exceeded. Please try again in one minute.'}"
+  },
+  {
+    "run_id": "20260401_120719",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:19.390725",
+    "finished_at": "2026-04-01T12:07:19.817236",
+    "duration_seconds": 0.43,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-10",
+      "end_date": "2026-03-10",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_10"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_10_air_quality_hourly_20260401_120719.csv",
+        "row_count": 2328,
+        "size_bytes": 275010,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_10_weather_hourly_20260401_120719.csv",
+        "row_count": 2328,
+        "size_bytes": 334596,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120720",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:20.935019",
+    "finished_at": "2026-04-01T12:07:21.433174",
+    "duration_seconds": 0.5,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-11",
+      "end_date": "2026-03-11",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_11"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_11_air_quality_hourly_20260401_120720.csv",
+        "row_count": 2328,
+        "size_bytes": 273912,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_11_weather_hourly_20260401_120720.csv",
+        "row_count": 2328,
+        "size_bytes": 333070,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120722",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:22.666376",
+    "finished_at": "2026-04-01T12:07:23.087069",
+    "duration_seconds": 0.42,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-12",
+      "end_date": "2026-03-12",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_12"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_12_air_quality_hourly_20260401_120722.csv",
+        "row_count": 2328,
+        "size_bytes": 274240,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_12_weather_hourly_20260401_120722.csv",
+        "row_count": 2328,
+        "size_bytes": 328119,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120724",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:24.271609",
+    "finished_at": "2026-04-01T12:07:24.682538",
+    "duration_seconds": 0.41,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-13",
+      "end_date": "2026-03-13",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_13"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_13_air_quality_hourly_20260401_120724.csv",
+        "row_count": 2328,
+        "size_bytes": 277548,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_13_weather_hourly_20260401_120724.csv",
+        "row_count": 2328,
+        "size_bytes": 328008,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120725",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:25.821318",
+    "finished_at": "2026-04-01T12:07:26.229630",
+    "duration_seconds": 0.41,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-14",
+      "end_date": "2026-03-14",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_14"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_14_air_quality_hourly_20260401_120725.csv",
+        "row_count": 2328,
+        "size_bytes": 275398,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_14_weather_hourly_20260401_120725.csv",
+        "row_count": 2328,
+        "size_bytes": 330997,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120727",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:27.403906",
+    "finished_at": "2026-04-01T12:07:27.852232",
+    "duration_seconds": 0.45,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-15",
+      "end_date": "2026-03-15",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_15"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_15_air_quality_hourly_20260401_120727.csv",
+        "row_count": 2328,
+        "size_bytes": 273811,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_15_weather_hourly_20260401_120727.csv",
+        "row_count": 2328,
+        "size_bytes": 332553,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120729",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:29.040133",
+    "finished_at": "2026-04-01T12:07:30.739259",
+    "duration_seconds": 1.7,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-16",
+      "end_date": "2026-03-16",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_16"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_16_air_quality_hourly_20260401_120729.csv",
+        "row_count": 2328,
+        "size_bytes": 273100,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_16_weather_hourly_20260401_120729.csv",
+        "row_count": 2328,
+        "size_bytes": 332067,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120731",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:31.916253",
+    "finished_at": "2026-04-01T12:07:35.592545",
+    "duration_seconds": 3.68,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-17",
+      "end_date": "2026-03-17",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_17"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_17_air_quality_hourly_20260401_120731.csv",
+        "row_count": 2328,
+        "size_bytes": 274706,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_17_weather_hourly_20260401_120731.csv",
+        "row_count": 2328,
+        "size_bytes": 330500,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120736",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:36.743132",
+    "finished_at": "2026-04-01T12:07:39.314448",
+    "duration_seconds": 2.57,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-18",
+      "end_date": "2026-03-18",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_18"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_18_air_quality_hourly_20260401_120736.csv",
+        "row_count": 2328,
+        "size_bytes": 275411,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_18_weather_hourly_20260401_120736.csv",
+        "row_count": 2328,
+        "size_bytes": 332312,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120740",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:40.433751",
+    "finished_at": "2026-04-01T12:07:42.938147",
+    "duration_seconds": 2.5,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-19",
+      "end_date": "2026-03-19",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_19"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_19_air_quality_hourly_20260401_120740.csv",
+        "row_count": 2328,
+        "size_bytes": 275721,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_19_weather_hourly_20260401_120740.csv",
+        "row_count": 2328,
+        "size_bytes": 329963,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120744",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:44.265756",
+    "finished_at": "2026-04-01T12:07:47.504805",
+    "duration_seconds": 3.24,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-20",
+      "end_date": "2026-03-20",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_20"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_20_air_quality_hourly_20260401_120744.csv",
+        "row_count": 2328,
+        "size_bytes": 274831,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_20_weather_hourly_20260401_120744.csv",
+        "row_count": 2328,
+        "size_bytes": 331487,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120748",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:07:48.626279",
+    "finished_at": "2026-04-01T12:07:51.829183",
+    "duration_seconds": 3.2,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-21",
+      "end_date": "2026-03-21",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_21"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_21_air_quality_hourly_20260401_120748.csv",
+        "row_count": 2328,
+        "size_bytes": 272866,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_21_weather_hourly_20260401_120748.csv",
+        "row_count": 2328,
+        "size_bytes": 331683,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_120753",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T12:07:53.041516",
+    "finished_at": "2026-04-01T12:07:56.085753",
+    "duration_seconds": 3.04,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-22",
+      "end_date": "2026-03-22",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_22"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_22_air_quality_hourly_20260401_120753.csv",
+        "row_count": 2328,
+        "size_bytes": 272981,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      }
+    ],
+    "error": "failed to request 'https://archive-api.open-meteo.com/v1/archive': {'reason': 'Minutely API request limit exceeded. Please try again in one minute.', 'error': True}"
+  },
+  {
+    "run_id": "20260401_121116",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:11:16.164866",
+    "finished_at": "2026-04-01T12:11:20.077530",
+    "duration_seconds": 3.91,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-22",
+      "end_date": "2026-03-22",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_22"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_22_air_quality_hourly_20260401_121116.csv",
+        "row_count": 2328,
+        "size_bytes": 272981,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_22_weather_hourly_20260401_121116.csv",
+        "row_count": 2328,
+        "size_bytes": 331587,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_121121",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:11:21.238201",
+    "finished_at": "2026-04-01T12:11:24.064517",
+    "duration_seconds": 2.83,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-23",
+      "end_date": "2026-03-23",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_23"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_23_air_quality_hourly_20260401_121121.csv",
+        "row_count": 2328,
+        "size_bytes": 276314,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_23_weather_hourly_20260401_121121.csv",
+        "row_count": 2328,
+        "size_bytes": 330001,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_121125",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:11:25.217676",
+    "finished_at": "2026-04-01T12:11:27.772962",
+    "duration_seconds": 2.56,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-24",
+      "end_date": "2026-03-24",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_24"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_24_air_quality_hourly_20260401_121125.csv",
+        "row_count": 2328,
+        "size_bytes": 276877,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_24_weather_hourly_20260401_121125.csv",
+        "row_count": 2328,
+        "size_bytes": 332971,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_121128",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:11:28.932207",
+    "finished_at": "2026-04-01T12:11:34.005685",
+    "duration_seconds": 5.07,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-25",
+      "end_date": "2026-03-25",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_25"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_25_air_quality_hourly_20260401_121128.csv",
+        "row_count": 2328,
+        "size_bytes": 275978,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_25_weather_hourly_20260401_121128.csv",
+        "row_count": 2328,
+        "size_bytes": 333894,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_121135",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:11:35.212560",
+    "finished_at": "2026-04-01T12:11:38.454334",
+    "duration_seconds": 3.24,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-26",
+      "end_date": "2026-03-26",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_26"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_26_air_quality_hourly_20260401_121135.csv",
+        "row_count": 2328,
+        "size_bytes": 273107,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_26_weather_hourly_20260401_121135.csv",
+        "row_count": 2328,
+        "size_bytes": 332157,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_121139",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-04-01T12:11:39.609005",
+    "finished_at": "2026-04-01T12:11:42.222563",
+    "duration_seconds": 2.61,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-27",
+      "end_date": "2026-03-27",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_27"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_27_air_quality_hourly_20260401_121139.csv",
+        "row_count": 2328,
+        "size_bytes": 274994,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data\\march_27_weather_hourly_20260401_121139.csv",
+        "row_count": 2328,
+        "size_bytes": 329480,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260401_121143",
+    "script": "collect",
+    "status": "error",
+    "started_at": "2026-04-01T12:11:43.362307",
+    "finished_at": "2026-04-01T12:11:45.360319",
+    "duration_seconds": 2.0,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-03-28",
+      "end_date": "2026-03-28",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "march_28"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data\\march_28_air_quality_hourly_20260401_121143.csv",
+        "row_count": 2328,
+        "size_bytes": 277421,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5",
+        "batch_size_used": 50
+      }
+    ],
+    "error": "failed to request 'https://archive-api.open-meteo.com/v1/archive': {'error': True, 'reason': 'Minutely API request limit exceeded. Please try again in one minute.'}"
+  }
+]

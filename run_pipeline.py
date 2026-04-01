@@ -1,9 +1,24 @@
 import argparse
 import subprocess
 import sys
+from datetime import date, timedelta
 from pathlib import Path
 from state import compute_window, save_state, load_state, mark_in_progress, clear_in_progress
 from metadata_tracker import PipelineRunTracker
+
+
+def build_prefix(start: str, end: str) -> str:
+    """Build a human-readable CSV prefix from the collection window.
+    e.g. 'march_14' for a single day, 'march_13_14' for two days."""
+    s = date.fromisoformat(start)    
+    e = date.fromisoformat(end)   
+    month = s.strftime("%B").lower()   
+    if s == e:
+        return f"{month}_{s.day}"
+    elif s.month == e.month:
+        return f"{month}_{s.day}_{e.day}"
+    else:
+        return f"{s.strftime('%B').lower()}_{s.day}_{e.strftime('%B').lower()}_{e.day}"
 
 
 def parse_args() -> argparse.Namespace:
@@ -17,6 +32,10 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--zip-traffic",   default=None,          help="Optional road-density CSV to join")
     p.add_argument("--refresh-static", dest="refresh_static", action="store_true",
                    help="Also regenerate static dimension tables (slow)")
+    p.add_argument("--start-date",     default=None,
+                   help="Backfill start date (YYYY-MM-DD). Required with --per-day.")
+    p.add_argument("--per-day",        action="store_true",
+                   help="Collect one CSV per calendar day from --start-date to the archive limit (yesterday).")
     return p.parse_args()
 
 
@@ -31,28 +50,67 @@ def run(cmd: list[str], label: str) -> None:
     print(f"{label} output:\n{result.stdout}")
     
     
+def _collect_day(python: str, args, out_dir: "Path", day_str: str) -> None:
+    """Run collect.py for a single day and report result. Does not update state."""
+    prefix = build_prefix(day_str, day_str)
+    if PipelineRunTracker.is_window_already_collected(out_dir, day_str, day_str):
+        print(f"[pipeline] {day_str} already collected — skipping.")
+        return
+    collect_cmd = [
+        python, "collect.py",
+        "--start-date", day_str,
+        "--end-date",   day_str,
+        "--cities",     args.cities,
+        "--out-dir",    args.out_dir,
+        "--out-prefix", prefix,
+        "--timezone",   args.timezone,
+        "--batch-size", str(args.batch_size),
+        "--uszips",     args.uszips,
+    ]
+    if args.zip_traffic:
+        collect_cmd += ["--zip-traffic", args.zip_traffic]
+    run(collect_cmd, f"collect.py ({day_str})")
+
+
 def main():
     args = parse_args()
     python = sys.executable # reusing the same venv that used for this script
-    
+    out_dir = Path(args.out_dir)
+
+    # ── Per-day backfill mode ────────────────────────────────────────────────
+    if args.per_day:
+        if not args.start_date:
+            print("[pipeline] --per-day requires --start-date (YYYY-MM-DD).")
+            sys.exit(1)
+        backfill_start = date.fromisoformat(args.start_date)
+        archive_limit  = date.today() - timedelta(days=1)  # archive endpoint lags by ~1 day
+        if backfill_start > archive_limit:
+            print(f"[pipeline] --start-date {args.start_date} is beyond the archive limit ({archive_limit}). Nothing to do.")
+            return
+        current = backfill_start
+        while current <= archive_limit:
+            _collect_day(python, args, out_dir, current.isoformat())
+            current += timedelta(days=1)
+        print(f"[pipeline] Per-day backfill complete: {args.start_date} → {archive_limit}.")
+        return
+
+    # ── Normal incremental mode ──────────────────────────────────────────────
     # First, we have to compute the date window to fetch data for, based on our state
     start, end = compute_window()
-    
-    
+
     if  start is None:
         print("[pipeline] Already up to date — nothing to ingest.")
     else:
         print(f"[pipeline] Date window: {start}  →  {end}")
-        out_dir = Path(args.out_dir)
-
         # Build the collect command
+        out_prefix = build_prefix(start, end)
         collect_cmd = [
             python, "collect.py",
             "--start-date", start,
             "--end-date", end,
             "--cities", args.cities,
             "--out-dir", args.out_dir,
-            "--out-prefix", args.out_prefix,
+            "--out-prefix", out_prefix,
             "--timezone", args.timezone,
             "--batch-size", str(args.batch_size),
             "--uszips", args.uszips,

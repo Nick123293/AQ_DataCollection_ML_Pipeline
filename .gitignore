@@ -1,6 +1,5 @@
 state.json
 .cache/
-data/
 __pycache__/
 *.pyc
 venv/

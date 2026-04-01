@@ -16,8 +16,8 @@ retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
 openmeteo = openmeteo_requests.Client(session=retry_session)
 
 # Will have to manually switch between forecast and archive endpoints, idk how to implement both
-AQ_URL = "https://air-quality-api.open-meteo.com/v1/air-quality"
-WEATHER_URL = "https://api.open-meteo.com/v1/forecast"  # forecast endpoint covers today + recent history (no ~5 day archive lag)
+AQ_URL = "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5"
+WEATHER_URL = "https://archive-api.open-meteo.com/v1/archive" # only use archive endpoint, not forecast
 
 MAX_WEIGHT_PER_MIN = 600.0
 WINDOW_SECONDS = 60     
@@ -170,10 +170,12 @@ def fetch_and_save_csv(
         batch_size: int,
         url: str,  # Added by rparaula for dynamic open meteo queries
         hourly_vars: list[str],
+        limiter: WeightRateLimiter = None,
 ):
     first_write = True
 
-    limiter = WeightRateLimiter(max_weight=600.0, window_seconds=60)
+    if limiter is None:
+        limiter = WeightRateLimiter(max_weight=600.0, window_seconds=60)
 
     d0 = pd.to_datetime(start_date)
     d1 = pd.to_datetime(end_date)
@@ -323,6 +325,8 @@ def main():
     
     """
 
+    shared_limiter = WeightRateLimiter(max_weight=600.0, window_seconds=60)
+
     try:
         fetch_and_save_csv(
             loc_df=loc_df,
@@ -333,6 +337,7 @@ def main():
             batch_size=batch_size,
             url=AQ_URL,
             hourly_vars=HOURLY_VARS,
+            limiter=shared_limiter,
         )
         tracker.record_output("air_quality", output_file, HOURLY_VARS, AQ_URL,
                               batch_size)  # added by rparaula to log the details of the air quality data fetching to the metadata log, including which variables we fetched, which API endpoint we used, and what batch size we used
@@ -347,6 +352,7 @@ def main():
             batch_size=batch_size_weather,
             url=WEATHER_URL,
             hourly_vars=WEATHER_HOURLY_VARS,
+            limiter=shared_limiter,
         )
         tracker.record_output("weather", output_file_weather, WEATHER_HOURLY_VARS, WEATHER_URL,
                               batch_size_weather)  # added by rparaula to log the details of the weather data fetching to the metadata log, including which variables we fetched, which API endpoint we used, and what batch size we used
