@@ -32,14 +32,35 @@ jobs:
 
       - name: Commit and push new data
         run: |
+          set -euo pipefail
+
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add state.json
-          # data/ is gitignored locally, so -f is needed to stage files on the runner.
-          # Remove the -f flag (or remove data/ from .gitignore) if you switch to Git LFS.
-          git add -f data/
-          # Only commit if something actually changed (skips silently if already up to date)
-          git diff --staged --quiet || git commit -m "chore: daily ingest $(date -u +%F)"
-          # Pull --rebase first so we fast-forward over any commits pushed while the job was running
+
+          # Make sure we’re on the branch (not detached) and have the latest remote state
+          git fetch origin master
+          git checkout master
+
+          # Rebase our working tree on top of the latest master (prevents non-fast-forward push)
           git pull --rebase origin master
-          git push
+
+          git add state.json
+          git add -f data/
+
+          # Commit only if staged changes exist
+          git diff --staged --quiet || git commit -m "chore: daily ingest $(date -u +%F)"
+
+          # Rebase again right before pushing (handles races with other runs)
+          git pull --rebase origin master
+
+          # Push with a small retry to handle near-simultaneous updates
+          for i in 1 2 3; do
+            if git push origin master; then
+              exit 0
+            fi
+            git pull --rebase origin master
+            sleep 2
+          done
+
+          echo "Push failed after retries" >&2
+          exit 1
