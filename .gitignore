@@ -1,6 +1,7 @@
 .cache/
 .cache.sqlite
 .cache.sqlite-journal
+data/pipeline_metadata.json
 *.pyc
 venv/
 .venv/
