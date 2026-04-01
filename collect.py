@@ -9,6 +9,7 @@ import requests_cache
 from retry_requests import retry
 import openmeteo_requests
 import math
+import os
 
 # Open Meteo client setup
 cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
@@ -16,7 +17,7 @@ retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
 openmeteo = openmeteo_requests.Client(session=retry_session)
 
 # Will have to manually switch between forecast and archive endpoints, idk how to implement both
-AQ_URL = "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=3HO8nE2N8vCbAKm5"
+AQ_URL = "https://customer-air-quality-api.open-meteo.com/v1/air-quality?apikey=" + os.environ["OPENMETEO_API_KEY"]
 WEATHER_URL = "https://archive-api.open-meteo.com/v1/archive" # only use archive endpoint, not forecast
 
 MAX_WEIGHT_PER_MIN = 600.0

@@ -77,13 +77,13 @@ def main():
     python = sys.executable # reusing the same venv that used for this script
     out_dir = Path(args.out_dir)
 
-    # ── Per-day backfill mode ────────────────────────────────────────────────
+    #Per-day backfill mode
     if args.per_day:
         if not args.start_date:
             print("[pipeline] --per-day requires --start-date (YYYY-MM-DD).")
             sys.exit(1)
         backfill_start = date.fromisoformat(args.start_date)
-        archive_limit  = date.today() - timedelta(days=1)  # archive endpoint lags by ~1 day
+        archive_limit  = date.today() - timedelta(days=5)  # Open Meteo archive API is ~5 days behind today
         if backfill_start > archive_limit:
             print(f"[pipeline] --start-date {args.start_date} is beyond the archive limit ({archive_limit}). Nothing to do.")
             return
@@ -94,7 +94,7 @@ def main():
         print(f"[pipeline] Per-day backfill complete: {args.start_date} → {archive_limit}.")
         return
 
-    # ── Normal incremental mode ──────────────────────────────────────────────
+    #Normal incremental mode
     # First, we have to compute the date window to fetch data for, based on our state
     start, end = compute_window()
 
@@ -102,44 +102,15 @@ def main():
         print("[pipeline] Already up to date — nothing to ingest.")
     else:
         print(f"[pipeline] Date window: {start}  →  {end}")
-        # Build the collect command
-        out_prefix = build_prefix(start, end)
-        collect_cmd = [
-            python, "collect.py",
-            "--start-date", start,
-            "--end-date", end,
-            "--cities", args.cities,
-            "--out-dir", args.out_dir,
-            "--out-prefix", out_prefix,
-            "--timezone", args.timezone,
-            "--batch-size", str(args.batch_size),
-            "--uszips", args.uszips,
-        ]
-        if args.zip_traffic:
-            collect_cmd += ["--zip-traffic", args.zip_traffic]
-
-        # --- Layer 1: metadata-based duplicate check ---
-        if PipelineRunTracker.is_window_already_collected(out_dir, start, end):
-            print(f"[pipeline] Window {start} → {end} already successfully collected. Skipping.")
-        else:
-            # --- Layer 2: crash-recovery lock ---
-            prior = load_state().get("in_progress")
-            if prior:
-                print(
-                    f"[pipeline] WARNING: A previous run for {prior['start']} → {prior['end']} "
-                    f"started at {prior['started_at']} did not finish cleanly.\n"
-                    f"           Partial output files may exist in {args.out_dir}.\n"
-                    f"           Proceeding with a fresh run for the same window."
-                )
-
-            mark_in_progress(start, end)
-            try:
-                run(collect_cmd, "collect.py (AQI + weather collection)")
-                # Update state to reflect we've ingested data up to 'end' date
-                save_state(end)
-                print(f"[pipeline] Checkpoint saved. Next run starts from {end} + 1 day.")
-            finally:
-                clear_in_progress()
+        current = date.fromisoformat(start)
+        archive_end = date.fromisoformat(end)
+        while current <= archive_end:
+            day_str = current.isoformat()
+            _collect_day(python, args, out_dir, day_str)
+            save_state(day_str)
+            print(f"[pipeline] Checkpoint saved. Next run starts from {day_str} + 1 day.")
+            current += timedelta(days=1)
+        print(f"[pipeline] Incremental collect complete: {start} → {end}.")
         
         
     # ── Optional: static dimension tables (slow, run on demand) ─────────────

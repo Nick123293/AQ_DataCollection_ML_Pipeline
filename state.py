@@ -35,25 +35,23 @@ def clear_in_progress() -> None:
     state.pop("in_progress", None)
     STATE_FILE.write_text(json.dumps(state, indent=2))
 
-def  compute_window() -> tuple[str, str]:
-    state = load_state()
-    last =  state.get("last_ingested_date")
+ARCHIVE_LAG_DAYS = 5  # Open Meteo archive API is ~5 days behind today
 
-    # Added by rparaula, hardcoding forecast windows to be only yesterday and today since idfk whats wrong with the automation at this point
-    yesterday = (date.today() - timedelta(days=1)).isoformat()
-    end = date.today().isoformat()
+def compute_window() -> tuple[str, str]:
+    state = load_state()
+    last = state.get("last_ingested_date")
+
+    archive_limit = (date.today() - timedelta(days=ARCHIVE_LAG_DAYS)).isoformat()
 
     if last is None:
-        start = yesterday  # no prior state: only collect yesterday + today
+        start = archive_limit
     else:
         start = (date.fromisoformat(last) + timedelta(days=1)).isoformat()
 
-    # Never look back further than yesterday — keep window to at most 2 days
-    if start <  yesterday:
-        start = yesterday
+    end = archive_limit
 
-    if start > end:  
-        return None, None  # already up to date, nothing to fetch 
+    if start > end:
+        return None, None  # already up to date, nothing to fetch
 
     return start, end
 

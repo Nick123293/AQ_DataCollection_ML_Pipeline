@@ -1,0 +1,43 @@
+name: Daily AQ Ingest
+
+on:
+  schedule:
+    - cron: "0 14 * * *"   # 9:00 AM CDT (UTC-5) every day
+  workflow_dispatch:         # Allow manual trigger from the GitHub Actions tab
+
+permissions:
+  contents: write            # Needed so the workflow can push commits back to the repo
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily ingest
+        env:
+          OPENMETEO_API_KEY: ${{ secrets.OPENMETEO_API_KEY }}
+        run: python run_pipeline.py --cities "Houston,TX"
+
+      - name: Commit and push new data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state.json
+          # data/ is gitignored locally, so -f is needed to stage files on the runner.
+          # Remove the -f flag (or remove data/ from .gitignore) if you switch to Git LFS.
+          git add -f data/
+          # Only commit if something actually changed (skips silently if already up to date)
+          git diff --staged --quiet || git commit -m "chore: daily ingest $(date -u +%F)"
+          git push
