@@ -122,7 +122,7 @@ class PipelineRunTracker:
         if output_file.exists():
             size_bytes = output_file.stat().st_size
             # Count data rows (exclude header)
-            with output_file.open("r") as f:
+            with output_file.open("r", encoding="utf-8", errors="replace") as f:
                 row_count = sum(1 for _ in f) - 1
 
         

@@ -1,0 +1,78 @@
+[
+  {
+    "run_id": "20260410_175739",
+    "script": "dump_zip_building_types",
+    "status": "error",
+    "started_at": "2026-04-10T17:57:39.182790",
+    "finished_at": "2026-04-10T18:08:41.513563",
+    "duration_seconds": 662.33,
+    "parameters": {
+      "cities": "Houston,TX",
+      "uszips": "uszips.csv",
+      "radius_m": 3000,
+      "batch_size": 10,
+      "sleep_s": 1.0,
+      "out_dir": "static data",
+      "out_prefix": "zip_building_types"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [],
+    "error": "'charmap' codec can't decode byte 0x9d in position 2387: character maps to <undefined>"
+  },
+  {
+    "run_id": "20260410_182432",
+    "script": "dump_zip_building_types",
+    "status": "success",
+    "started_at": "2026-04-10T18:24:32.246871",
+    "finished_at": "2026-04-10T18:47:41.839593",
+    "duration_seconds": 1389.59,
+    "parameters": {
+      "cities": "Houston,TX",
+      "uszips": "uszips.csv",
+      "radius_m": 3000,
+      "batch_size": 10,
+      "sleep_s": 1.0,
+      "out_dir": "static data",
+      "out_prefix": "zip_building_types"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "building_types",
+        "file": "static data\\zip_building_types_20260410_182432.csv",
+        "row_count": 82135,
+        "size_bytes": 5435102,
+        "variable_count": 12,
+        "variables": [
+          "osm_id",
+          "osm_type",
+          "zip",
+          "name",
+          "housenumber",
+          "street",
+          "city",
+          "postcode",
+          "building_tag",
+          "amenity_tag",
+          "lat",
+          "lon"
+        ],
+        "api_url": "https://overpass-api.de/api/interpreter",
+        "batch_size_used": 10
+      }
+    ],
+    "error": null
+  }
+]
