@@ -16,7 +16,7 @@ TXT_FILES = [
     'US_1a_2023.txt',
     'US_1a_2024.txt',
 ]
-OUTPUT_DIR = Path('data/csv')
+OUTPUT_DIR = Path('static data')
 
 HOUSTON_COUNTIES = ['HARRIS', 'FORT BEND', 'BRAZORIA', 'GALVESTON', 'MONTGOMERY']
 

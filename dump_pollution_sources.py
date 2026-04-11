@@ -26,7 +26,7 @@ def parse_args():
     p.add_argument("--uszips", default="uszips.csv",
                    help="Path to simplemaps uszips.csv")
     p.add_argument("--batch-size", type=int, default=25, help="ZIPs per batch")
-    p.add_argument("--out-dir", default="data", help="Output directory")
+    p.add_argument("--out-dir", default="static data", help="Output directory")
     p.add_argument("--out-prefix", default="zip_pollution_sources", help="Output filename prefix")
     return p.parse_args()
 

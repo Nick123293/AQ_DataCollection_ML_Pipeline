@@ -6,7 +6,7 @@ import pandas as pd
 # Population data source: ACS 2022 5-year ZCTA estimates + simplemaps coordinates
 # Stored externally in houston_zips.csv (edit that file to add/remove ZIPs)
 ZIPS_CSV = Path(__file__).parent / "houston_zips.csv"
-OUTPUT   = Path("data/population_density.csv")
+OUTPUT   = Path("static data/population_density.csv")
 
 # Census ACS 5-year endpoint for ZCTA population
 CENSUS_URL = (

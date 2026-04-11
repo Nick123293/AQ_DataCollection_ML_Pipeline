@@ -98,7 +98,7 @@ def parse_args():
                    help="Path to simplemaps uszips.csv, you can get this at https://simplemaps.com/data/us-zips")
     p.add_argument("--radius-m", type=int, default=1000, help="Radius in meters")
     p.add_argument("--batch-size", type=int, default=25, help="ZIPs per OSM batch (smaller is safer)")
-    p.add_argument("--out-dir", default="data", help="Output directory")
+    p.add_argument("--out-dir", default="static data", help="Output directory")
     p.add_argument("--out-prefix", default="zip_road_density", help="Output filename prefix")
     return p.parse_args()
 
