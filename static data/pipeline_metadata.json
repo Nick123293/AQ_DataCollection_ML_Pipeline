@@ -74,5 +74,305 @@
       }
     ],
     "error": null
+  },
+  {
+    "run_id": "20260419_185035",
+    "script": "dump_zip_building_types",
+    "status": "success",
+    "started_at": "2026-04-19T18:50:35.614976",
+    "finished_at": "2026-04-19T18:53:14.473868",
+    "duration_seconds": 158.86,
+    "parameters": {
+      "cities": "Houston, TX",
+      "uszips": "uszips.csv",
+      "radius_m": 3000,
+      "batch_size": 10,
+      "sleep_s": 1.0,
+      "out_dir": "static data",
+      "out_prefix": "zip_building_types"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "building_types",
+        "file": "static data\\zip_building_types_20260419_185035.csv",
+        "row_count": null,
+        "size_bytes": null,
+        "variable_count": 12,
+        "variables": [
+          "osm_id",
+          "osm_type",
+          "zip",
+          "name",
+          "housenumber",
+          "street",
+          "city",
+          "postcode",
+          "building_tag",
+          "amenity_tag",
+          "lat",
+          "lon"
+        ],
+        "api_url": "https://overpass-api.de/api/interpreter",
+        "batch_size_used": 10
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260419_191413",
+    "script": "dump_zip_building_types",
+    "status": "success",
+    "started_at": "2026-04-19T19:14:13.529059",
+    "finished_at": "2026-04-19T19:16:38.710232",
+    "duration_seconds": 145.18,
+    "parameters": {
+      "cities": "Houston, TX",
+      "uszips": "uszips.csv",
+      "radius_m": 3000,
+      "batch_size": 10,
+      "sleep_s": 1.0,
+      "out_dir": "static data",
+      "out_prefix": "zip_building_types"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "building_types",
+        "file": "static data\\zip_building_types_20260419_191413.csv",
+        "row_count": null,
+        "size_bytes": null,
+        "variable_count": 12,
+        "variables": [
+          "osm_id",
+          "osm_type",
+          "zip",
+          "name",
+          "housenumber",
+          "street",
+          "city",
+          "postcode",
+          "building_tag",
+          "amenity_tag",
+          "lat",
+          "lon"
+        ],
+        "api_url": "https://overpass-api.de/api/interpreter",
+        "batch_size_used": 10
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260419_193440",
+    "script": "dump_zip_building_types",
+    "status": "success",
+    "started_at": "2026-04-19T19:34:40.538664",
+    "finished_at": "2026-04-19T19:37:06.645223",
+    "duration_seconds": 146.11,
+    "parameters": {
+      "cities": "Houston, TX",
+      "uszips": "uszips.csv",
+      "radius_m": 3000,
+      "batch_size": 10,
+      "sleep_s": 1.0,
+      "out_dir": "static data",
+      "out_prefix": "zip_building_types"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "building_types",
+        "file": "static data\\zip_building_types_20260419_193440.csv",
+        "row_count": null,
+        "size_bytes": null,
+        "variable_count": 12,
+        "variables": [
+          "osm_id",
+          "osm_type",
+          "zip",
+          "name",
+          "housenumber",
+          "street",
+          "city",
+          "postcode",
+          "building_tag",
+          "amenity_tag",
+          "lat",
+          "lon"
+        ],
+        "api_url": "https://overpass-api.de/api/interpreter",
+        "batch_size_used": 10
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260419_194553",
+    "script": "dump_zip_building_types",
+    "status": "success",
+    "started_at": "2026-04-19T19:45:53.984496",
+    "finished_at": "2026-04-19T19:48:18.509225",
+    "duration_seconds": 144.52,
+    "parameters": {
+      "cities": "Houston, TX",
+      "uszips": "uszips.csv",
+      "radius_m": 3000,
+      "batch_size": 10,
+      "sleep_s": 1.0,
+      "out_dir": "static data",
+      "out_prefix": "zip_building_types"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "building_types",
+        "file": "static data\\zip_building_types_20260419_194553.csv",
+        "row_count": null,
+        "size_bytes": null,
+        "variable_count": 12,
+        "variables": [
+          "osm_id",
+          "osm_type",
+          "zip",
+          "name",
+          "housenumber",
+          "street",
+          "city",
+          "postcode",
+          "building_tag",
+          "amenity_tag",
+          "lat",
+          "lon"
+        ],
+        "api_url": "https://overpass-api.de/api/interpreter",
+        "batch_size_used": 10
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260419_195047",
+    "script": "dump_zip_building_types",
+    "status": "success",
+    "started_at": "2026-04-19T19:50:47.016270",
+    "finished_at": "2026-04-19T19:53:11.218578",
+    "duration_seconds": 144.2,
+    "parameters": {
+      "cities": "Houston, TX",
+      "uszips": "uszips.csv",
+      "radius_m": 9000,
+      "batch_size": 10,
+      "sleep_s": 1.0,
+      "out_dir": "static data",
+      "out_prefix": "zip_building_types"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "building_types",
+        "file": "static data\\zip_building_types_20260419_195047.csv",
+        "row_count": 0,
+        "size_bytes": 107,
+        "variable_count": 12,
+        "variables": [
+          "osm_id",
+          "osm_type",
+          "zip",
+          "name",
+          "housenumber",
+          "street",
+          "city",
+          "postcode",
+          "building_tag",
+          "amenity_tag",
+          "lat",
+          "lon"
+        ],
+        "api_url": "https://overpass-api.de/api/interpreter",
+        "batch_size_used": 10
+      }
+    ],
+    "error": null
+  },
+  {
+    "run_id": "20260419_195521",
+    "script": "dump_zip_building_types",
+    "status": "success",
+    "started_at": "2026-04-19T19:55:21.714097",
+    "finished_at": "2026-04-19T20:03:38.256419",
+    "duration_seconds": 496.54,
+    "parameters": {
+      "cities": "Houston, TX",
+      "uszips": "uszips.csv",
+      "radius_m": 9000,
+      "batch_size": 10,
+      "sleep_s": 1.0,
+      "out_dir": "static data",
+      "out_prefix": "zip_building_types"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "building_types",
+        "file": "static data\\zip_building_types_20260419_195521.csv",
+        "row_count": 1445802,
+        "size_bytes": 90847600,
+        "variable_count": 12,
+        "variables": [
+          "osm_id",
+          "osm_type",
+          "zip",
+          "name",
+          "housenumber",
+          "street",
+          "city",
+          "postcode",
+          "building_tag",
+          "amenity_tag",
+          "lat",
+          "lon"
+        ],
+        "api_url": "https://overpass-api.de/api/interpreter",
+        "batch_size_used": 10
+      }
+    ],
+    "error": null
   }
 ]

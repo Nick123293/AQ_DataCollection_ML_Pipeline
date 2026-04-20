@@ -10,6 +10,9 @@ import requests
 from metadata_tracker import PipelineRunTracker
 
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+OVERPASS_HEADERS = {
+    "User-Agent": "AQ_DataCollection_ML_Pipeline/1.0 (https://github.com/GlowSand/AQ_DataCollection_ML_Pipeline)"
+}
 
 
 
@@ -43,7 +46,7 @@ def get_zip_centroids(city: str, state_id: str, uszips_csv_path: str) -> pd.Data
     sub = df[
         (df["city"].astype(str).str.strip().str.lower() == city_norm)
         & (df["state_id"].astype(str).str.strip().str.upper() == state_norm)
-    ][["zip", "lat", "lng"]].copy()
+    ][["zip", "lat", "lng", "density"]].copy()
 
     sub = sub.rename(columns={"lat": "latitude", "lng": "longitude"})
     sub = sub.dropna(subset=["latitude", "longitude"]).drop_duplicates(subset=["zip"]).reset_index(drop=True)
@@ -51,26 +54,70 @@ def get_zip_centroids(city: str, state_id: str, uszips_csv_path: str) -> pd.Data
     return sub
 
 
+def density_to_radius(density: float, max_radius_m: int) -> int:
+    """
+    Derive a search radius from population density (people/km²).
+
+    Denser ZIPs are geographically smaller, so a tighter radius is sufficient.
+    Sparse ZIPs can span many km, so a wider radius is needed to capture buildings.
+
+    Tiers (capped by max_radius_m):
+      > 4000 /km²  → 2 000 m  (dense urban core)
+      > 1000 /km²  → 3 500 m  (inner suburban)
+      >  300 /km²  → 5 500 m  (outer suburban)
+      ≤  300 /km²  → 9 000 m  (rural / exurban)
+    """
+    if density > 4000:
+        r = 2000
+    elif density > 1000:
+        r = 3500
+    elif density > 300:
+        r = 5500
+    else:
+        r = 9000
+    return min(r, max_radius_m)
+
+
 def chunked(df: pd.DataFrame, size: int):
     for i in range(0, len(df), size):
         yield df.iloc[i: i + size]
 
 
-def _query_overpass(query: str, timeout: int = 60) -> dict | None:
-    """POST a raw Overpass QL query and return the parsed JSON, or None on failure."""
-    try:
-        response = requests.post(
-            OVERPASS_URL,
-            data={"data": query},
-            timeout=timeout + 5,  # HTTP timeout slightly longer than Overpass timeout
-        )
-        if response.status_code != 200:
-            print(f"WARNING: Overpass returned HTTP {response.status_code}. Skipping.")
+def _query_overpass(query: str, timeout: int = 60, max_retries: int = 5) -> dict | None:
+    """POST a raw Overpass QL query and return the parsed JSON, or None on failure.
+
+    Retries with exponential backoff on 406/429 (rate-limit) responses.
+    """
+    wait = 10  # initial wait in seconds before first retry
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = requests.post(
+                OVERPASS_URL,
+                data={"data": query},
+                headers=OVERPASS_HEADERS,
+                timeout=timeout + 5,  # HTTP timeout slightly longer than Overpass timeout
+            )
+        except requests.RequestException as e:
+            print(f"WARNING: Overpass request failed: {e}. Skipping.")
             return None
-        return response.json()
-    except requests.RequestException as e:
-        print(f"WARNING: Overpass request failed: {e}. Skipping.")
+
+        if response.status_code == 200:
+            return response.json()
+
+        if response.status_code in (406, 429):
+            if attempt < max_retries:
+                print(f"  Overpass rate-limited (HTTP {response.status_code}). "
+                      f"Waiting {wait}s before retry {attempt}/{max_retries - 1} ...")
+                time.sleep(wait)
+                wait *= 2  # exponential backoff
+                continue
+            print(f"WARNING: Overpass rate-limited after {max_retries} attempts. Skipping.")
+            return None
+
+        print(f"WARNING: Overpass returned HTTP {response.status_code}. Skipping.")
         return None
+
+    return None
 
 
 def _get_buildings_for_zip(zip_code: int, lat: float, lon: float, radius_m: int) -> list[dict]:
@@ -84,14 +131,13 @@ def _get_buildings_for_zip(zip_code: int, lat: float, lon: float, radius_m: int)
     """
     zip_str = str(zip_code).zfill(5)
 
-    # Only fetch elements that carry useful tag information:
-    #   - building=* with a specific type (excluding the uninformative "yes")
-    #   - OR any element with an amenity=* tag (meaningful regardless of building value)
+    # Fetch all building=* elements (including generic "yes", which dominates US OSM data)
+    # plus amenity=* elements for type resolution.
     query = f"""
 [out:json][timeout:60];
 (
-  node["building"]["building"!="yes"](around:{radius_m},{lat},{lon});
-  way["building"]["building"!="yes"](around:{radius_m},{lat},{lon});
+  node["building"](around:{radius_m},{lat},{lon});
+  way["building"](around:{radius_m},{lat},{lon});
   node["amenity"](around:{radius_m},{lat},{lon});
   way["amenity"](around:{radius_m},{lat},{lon});
 );
@@ -145,9 +191,13 @@ def dump_zip_building_types(loc_df: pd.DataFrame, output_file: Path, radius_m: i
             zip_code = int(row["zip"])
             lat = float(row["latitude"])
             lon = float(row["longitude"])
+            density = float(row.get("density", 0) or 0)
 
-            print(f"  Querying ZIP {str(zip_code).zfill(5)} ...")
-            buildings = _get_buildings_for_zip(zip_code, lat, lon, radius_m)
+            zip_radius = density_to_radius(density, max_radius_m=radius_m)
+            print(f"  Querying ZIP {str(zip_code).zfill(5)} (density={density:.0f}/km², radius={zip_radius}m) ...")
+            buildings = _get_buildings_for_zip(zip_code, lat, lon, zip_radius)
+            for b in buildings:
+                b["query_radius_m"] = zip_radius
             rows.extend(buildings)
 
             # Rate-limit: Overpass public instance recommends no more than 1 request/second
@@ -157,6 +207,12 @@ def dump_zip_building_types(loc_df: pd.DataFrame, output_file: Path, radius_m: i
             out_df = pd.DataFrame(rows)
             out_df.to_csv(output_file, mode="a", header=first_write, index=False)
             first_write = False
+        elif first_write:
+            # Write a header-only CSV so a run with no results still produces a visible file
+            pd.DataFrame(columns=[
+                "osm_id", "osm_type", "zip", "name", "housenumber", "street", "city",
+                "postcode", "building_tag", "amenity_tag", "lat", "lon", "query_radius_m",
+            ]).to_csv(output_file, index=False)
 
         print(f"Saved batch of {len(batch)} ZIPs ({len(rows)} buildings) -> {output_file.name}")
 
@@ -168,8 +224,9 @@ def parse_args():
     p.add_argument("--cities", required=True, help='Semicolon-separated list like "Houston,TX;Austin,TX"')
     p.add_argument("--uszips", default="uszips.csv",
                    help="Path to simplemaps uszips.csv (https://simplemaps.com/data/us-zips)")
-    p.add_argument("--radius-m", type=int, default=3000,
-                   help="Search radius in meters around each ZIP centroid (default: 3000)")
+    p.add_argument("--radius-m", type=int, default=9000,
+                   help="Maximum search radius in meters (default: 9000). "
+                        "Actual radius per ZIP is derived from population density and capped at this value.")
     p.add_argument("--batch-size", type=int, default=10, help="ZIPs per write batch")
     p.add_argument("--sleep-s", type=float, default=1.0,
                    help="Seconds to sleep between Overpass requests (rate-limit)")
