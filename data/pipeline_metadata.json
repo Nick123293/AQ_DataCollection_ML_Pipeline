@@ -2334,5 +2334,78 @@
       }
     ],
     "error": null
+  },
+  {
+    "run_id": "20260502_193331",
+    "script": "collect",
+    "status": "success",
+    "started_at": "2026-05-02T19:33:31.581857",
+    "finished_at": "2026-05-02T19:33:34.497048",
+    "duration_seconds": 2.92,
+    "parameters": {
+      "cities": "Houston,TX",
+      "start_date": "2026-04-27",
+      "end_date": "2026-04-27",
+      "timezone": "America/Chicago",
+      "batch_size": 50,
+      "uszips": "uszips.csv",
+      "zip_traffic": null,
+      "out_dir": "data",
+      "out_prefix": "april_27"
+    },
+    "locations": {
+      "total_zip_centroids": 97,
+      "cities_found": [
+        "Houston,TX"
+      ],
+      "cities_skipped": []
+    },
+    "outputs": [
+      {
+        "type": "air_quality",
+        "file": "data/april_27_air_quality_hourly_20260502_193331.csv",
+        "row_count": 2328,
+        "size_bytes": 273922,
+        "variable_count": 11,
+        "variables": [
+          "us_aqi",
+          "pm10",
+          "pm2_5",
+          "carbon_monoxide",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "ozone",
+          "uv_index_clear_sky",
+          "uv_index",
+          "dust",
+          "aerosol_optical_depth"
+        ],
+        "api_url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+        "batch_size_used": 50
+      },
+      {
+        "type": "weather",
+        "file": "data/april_27_weather_hourly_20260502_193331.csv",
+        "row_count": 2328,
+        "size_bytes": 331246,
+        "variable_count": 11,
+        "variables": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "precipitation",
+          "wind_speed_10m",
+          "wind_speed_100m",
+          "wind_direction_10m",
+          "wind_direction_100m",
+          "wind_gusts_10m",
+          "shortwave_radiation",
+          "diffuse_radiation",
+          "cloud_cover"
+        ],
+        "api_url": "https://archive-api.open-meteo.com/v1/archive",
+        "batch_size_used": 50
+      }
+    ],
+    "error": null
   }
 ]
