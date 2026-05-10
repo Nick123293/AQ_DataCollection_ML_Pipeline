@@ -99,42 +99,6 @@ This is used in `merge_data_into_master_file`, then the output files of this scr
 `static_data/` holds the time invariant data gathered by data-collection (`tri_checmials_houston.csv` and `tri_facilities_houston.csv` are using in the `preprocessing.py` script. 
 This contains information on important facilities and their emmissions which is used to caluclate the facility_impact_score feature.
 
-**Running `merge_data_into_master_file.py`**
-This script is used to combine all data from `data/` into two master files, one containing all air-quality rows and one containing all weather rows. 
-
-##Note: For this script to work in its current implementation, the air-quality data must have `_air_quality_` and `_weather_` included in the file name for the respective data type. 
-The current implementation appends files based on earliest data first, so the date is also required in the filename. This restriction can be removed since these files are sorted later in `preprocessing.py`
-
-This script uses a state file to track which csv's from the `data/` folder have already been appended into the 'master' files. 
-This allows you to rerun this command on the same 'master' files multiple times without appending the same file twice. 
-This state file is stored as a json and is given as a command line argument. If the argument given does not point to a state file json, it creates one.
-The merge script sorts files using the month token and numeric part of the second token in the filename to append by earliest time first.
-
-This script has 4 command line arguments:
-
-1) `--input-dir` takes the path to your `data/` folder.
-2) `--state-file` takes the path to your statefile.
-3) `--air-master` takes the path to the output file of air-quality (the 'master' file with all appended rows from `_air_quality_` files).
-4) `--weather-master` takes the path to the outout file of weather (the 'master' file with all appended rows from `_weather_` files).
-
-
-The important columns used directly by `preprocessing.py` are:
-
-```text
-trifd
-latitude
-longitude
-total_air_emissions_lbs
-```
-
-The script converts facility latitude/longitude into point geometry and computes ZIP-to-facility distances and directions. These are used to build `facility_impact_score`.
-
-**How to gather:**
-
-The provided `preprocessing.py` header says this project used `tri_facilities_houston.csv` from the repository/static data and did not require additional preprocessing before using it in `preprocessing.py`.
-
-The referenced upstream GitHub repository also includes `process_tri_data.py` and notes that TRI text files are processed separately. Use that repository as a reference if regenerating TRI CSVs from raw EPA TRI files.
-
 ## 3. Recommended directory layout
 
 A clean project layout might look like this:
@@ -209,6 +173,27 @@ The commands below assume you are running them from the directory containing the
 
 Use `merge_data_into_master_file.py` to append all collected air-quality and weather CSVs into two master files.
 
+
+**Running `merge_data_into_master_file.py`**
+This script is used to combine all data from `data/` into two master files, one containing all air-quality rows and one containing all weather rows. 
+
+##Note: For this script to work in its current implementation, the air-quality data must have `_air_quality_` and `_weather_` included in the file name for the respective data type. 
+The current implementation appends files based on earliest data first, so the date is also required in the filename. This restriction can be removed since these files are sorted later in `preprocessing.py`
+
+This script uses a state file to track which csv's from the `data/` folder have already been appended into the 'master' files. 
+This allows you to rerun this command on the same 'master' files multiple times without appending the same file twice. 
+This state file is stored as a json and is given as a command line argument. If the argument given does not point to a state file json, it creates one.
+The merge script sorts files using the month token and numeric part of the second token in the filename to append by earliest time first.
+
+This script has 4 command line arguments:
+
+1) `--input-dir` takes the path to your `data/` folder.
+2) `--state-file` takes the path to your statefile.
+3) `--air-master` takes the path to the output file of air-quality (the 'master' file with all appended rows from `_air_quality_` files).
+4) `--weather-master` takes the path to the outout file of weather (the 'master' file with all appended rows from `_weather_` files).
+
+Sample Command:
+
 ```bash
 python merge_data_into_master_file.py \
   --input-dir ../data/raw-streamed \
@@ -225,8 +210,6 @@ What this does:
 - Sorts the files chronologically using their filename tokens.
 - Appends new files only once using `--state-file`.
 - Rebuilds the master file if newly discovered files belong earlier in chronological order.
-
-You can rerun this command after adding new streamed files. The state JSON tracks which files were already merged.
 
 ---
 
