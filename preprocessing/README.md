@@ -503,7 +503,7 @@ Columns below the threshold are removed unless they are excluded from the varian
 
 ---
 
-## 8. How spatial-impact scoring works
+## 7. How spatial-impact scoring works
 
 The script precomputes ZIP-to-road and ZIP-to-facility relationships once, before streaming the merged rows. This avoids recalculating geometry distances for every row.
 
@@ -541,7 +541,7 @@ road_impact_score = sum(distance_decay * max(dot(wind_vector, road_to_zip_unit_v
 
 ---
 
-## 10. Troubleshooting notes
+## 8. Troubleshooting notes
 
 ### `zip` or `time` column errors
 
