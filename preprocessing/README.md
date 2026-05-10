@@ -615,3 +615,20 @@ python preprocessing.py \
   --right-drop-columns city state \
   --feats-for-past us_aqi pm2_5 ozone wind_speed_100m wind_direction_100m_cos wind_direction_100m_sin \
   --num-past-feats 24
+```
+
+## 10. Limitations
+
+The main limitation of this pipeline is that only preprocessing.py is done in a block-based manner, meaning if files get to large to fit in main memory other scripts may fail. 
+
+Another limitation is that currently intermediate data is stored very infrequently and mostly forcefully due to the data being in different scripts. Intermediate data is stored after running each script, then by `preprocessing.py` before the column filtering is applied.
+
+A secondary limitation is that cardinality and variance filtering is not very useful, the best way to go about feature removal is to have the data exploration phase inform training about which columns to remove. 
+
+## 11. Recommendations
+
+It is probably more beneficial to implement the external merge sort into the `merge_data_into_master_file.py` so the output can be sorted master files. Additionally, all of these different scripts should be merged into one script so intermediate data can be stored intentionally and not forcefully. 
+
+The current log implementation is useful for seeing how data is processed, but does not allow you to restart the pipeline from a checkpoint if the pipeline fails in the middle (with the caveat that intermediate data is saved between different script runs, so you only have to rerun the script that fails). 
+
+A better implementation of this stage would be to merge all of these scripts into one, then create a log which saves checkpoints periodically so the pipeline can restart from a checkpoint is the script fails during the run.
