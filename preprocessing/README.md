@@ -135,7 +135,7 @@ The provided `preprocessing.py` header says this project used `tri_facilities_ho
 
 The referenced upstream GitHub repository also includes `process_tri_data.py` and notes that TRI text files are processed separately. Use that repository as a reference if regenerating TRI CSVs from raw EPA TRI files.
 
-## 4. Recommended directory layout
+## 3. Recommended directory layout
 
 A clean project layout might look like this:
 
@@ -171,7 +171,7 @@ A shapefile is actually multiple files with the same base name, usually includin
 
 ---
 
-## 5. Python environment
+## 4. Python environment
 
 Recommended Python packages:
 
@@ -201,7 +201,7 @@ Run the scripts in this order:
 
 ---
 
-## 7. Step-by-step commands
+## 5. Step-by-step commands
 
 The commands below assume you are running them from the directory containing the scripts. Adjust paths as needed.
 
@@ -387,7 +387,7 @@ python preprocessing.py \
 
 ---
 
-## 8. Main `preprocessing.py` options
+## 6. Main `preprocessing.py` options
 
 ### Required inputs
 
@@ -503,7 +503,7 @@ Columns below the threshold are removed unless they are excluded from the varian
 
 ---
 
-## 9. How spatial-impact scoring works
+## 8. How spatial-impact scoring works
 
 The script precomputes ZIP-to-road and ZIP-to-facility relationships once, before streaming the merged rows. This avoids recalculating geometry distances for every row.
 
@@ -598,7 +598,7 @@ Files that do not match this pattern may not be merged correctly.
 
 ---
 
-## 11. Minimal end-to-end command block
+## 9. Minimal end-to-end command block
 
 ```bash
 # 1. Merge streamed raw files.
