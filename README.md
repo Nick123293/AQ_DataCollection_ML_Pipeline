@@ -1277,17 +1277,14 @@ Otherwise, it runs on CPU.
 
 
 
-#### Validation
-
-
-### AQ ML Pipeline — Validation Phase
+## AQ ML Pipeline — Validation Phase
 
 **Authors:** Alfredo Hernandez, Jose Perla  
 **Project:** Houston Area Air Quality Index (AQI) Forecasting — Phase 2 Validation
 
 ---
 
-#### Overview
+### Overview
 
 This repository covers the **validation phase** of a machine learning pipeline that forecasts Air Quality Index (AQI) values across Houston-area ZIP codes. The core model is an **Autoencoder + LSTM (AE+LSTM)** neural network that learns temporal AQI patterns from hourly environmental sensor data and predicts AQI one hour ahead.
 
@@ -1302,7 +1299,7 @@ The validation work documented here answers five questions:
 
 ---
 
-#### Hardware & Environment
+### Hardware & Environment
 
 The notebook was run locally on the following machine:
 
@@ -1321,7 +1318,7 @@ The notebook was run locally on the following machine:
 
 ---
 
-#### Project Structure
+### Project Structure
 
 ```
 AQ_ML_Pipeline/
@@ -1338,23 +1335,23 @@ AQ_ML_Pipeline/
 
 ---
 
-#### Data Description
+### Data Description
 
-##### Training Dataset (`all_features_training.csv`)
+#### Training Dataset (`all_features_training.csv`)
 
 - **Raw shape:** 95,448 rows × 185 columns
 - **After missing-value removal:** 93,120 rows
 - **Coverage:** Hourly AQI and environmental readings across 97 Houston-area ZIP codes
 - **Target column:** `us_aqi` — the US Air Quality Index value
 
-##### External Validation Dataset (`all_features_validation.csv`)
+#### External Validation Dataset (`all_features_validation.csv`)
 
 - **Raw shape:** 25,608 rows × 185 columns
 - **After alignment and missing-value removal:** 23,280 rows
 - **Validation window:** `2026-04-07 00:00:00` to `2026-04-15 23:00:00`
 - **Final sequence tensor shape:** `(20,952, 24, 57)` — meaning 20,952 forecastable sequences, each with a 24-hour lookback window and 57 input features per timestep
 
-##### Key Feature Groups
+#### Key Feature Groups
 
 The pipeline organizes the 185 raw columns into four groups:
 
@@ -1365,7 +1362,7 @@ The pipeline organizes the 185 raw columns into four groups:
 | **Cyclic features** | Sine/cosine encodings of time (hour, day-of-week, etc.) |
 | **Binary features** | Indicator variables for categorical conditions |
 
-##### Dropped (Uninformative) Columns
+#### Dropped (Uninformative) Columns
 
 The following columns are removed before training and validation:
 
@@ -1374,7 +1371,7 @@ wind_speed_100m, month, day, hour, day_of_week,
 day_of_year, month_sin, month_cos
 ```
 
-##### Distribution Shift (Train vs. Validation)
+#### Distribution Shift (Train vs. Validation)
 
 The training and external validation periods are not identical. Key differences:
 
@@ -1389,9 +1386,9 @@ This shift is expected because the validation set covers different calendar date
 
 ---
 
-#### Model Architecture
+### Model Architecture
 
-##### Autoencoder (AE)
+#### Autoencoder (AE)
 
 The Autoencoder is a `TimeVariantAutoencoder` that compresses the 21 selected sensor/environmental features into a lower-dimensional latent representation before passing them to the LSTM.
 
@@ -1401,7 +1398,7 @@ The Autoencoder is a `TimeVariantAutoencoder` that compresses the 21 selected se
 - **Training:** 50 epochs, Adam optimizer, learning rate `1e-3`, batch size 1048, MSE loss
 - **Purpose:** Reduce noise and dimensionality from the sensor inputs before temporal modeling
 
-##### LSTM
+#### LSTM
 
 The `AQI_LSTM` receives a concatenation of:
 - The AE latent representation (8 dimensions)
@@ -1414,7 +1411,7 @@ Each input sequence covers the **previous 24 hourly timesteps** (`lookback = 24`
 - **Hidden size:** configurable (see `Config` in the notebook)
 - **Early stopping:** patience of 10 epochs on validation loss
 
-##### Configuration (from `Config` dataclass)
+#### Configuration (from `Config` dataclass)
 
 ```python
 val_size       = 0.20       # 20% of training data used for internal validation split
@@ -1429,9 +1426,9 @@ ae_batch_size  = 1048
 
 ---
 
-#### How to Replicate
+### How to Replicate
 
-##### Step 1: Install Dependencies
+#### Step 1: Install Dependencies
 
 ```bash
 pip install torch torchvision numpy pandas scikit-learn matplotlib scipy statsmodels
@@ -1439,7 +1436,7 @@ pip install torch torchvision numpy pandas scikit-learn matplotlib scipy statsmo
 
 For GPU acceleration on your RTX 5070, install the CUDA-enabled version of PyTorch from [pytorch.org](https://pytorch.org/get-started/locally/) matching your CUDA version.
 
-##### Step 2: Prepare the Data
+#### Step 2: Prepare the Data
 
 Place the two CSV files in the `data/` folder:
 
@@ -1450,7 +1447,7 @@ data/all_features_validation.csv
 
 Both files must have identical column structure (185 columns). The notebook will automatically detect the project root by looking for the presence of the `data/`, `models/`, `py/`, `runs/`, and `tex/` directories.
 
-##### Step 3: Run the Notebook
+#### Step 3: Run the Notebook
 
 Open `final_aiq_validation.ipynb` in Jupyter Notebook and run all cells top-to-bottom. The notebook is organized into 13 sections:
 
@@ -1470,7 +1467,7 @@ Open `final_aiq_validation.ipynb` in Jupyter Notebook and run all cells top-to-b
 | 12. Consensus Feature Summary | Combines Spearman correlation, model importance, and permutation importance |
 | 13. Final Written Summary | Prints a text summary of all results |
 
-##### Step 4: Outputs
+#### Step 4: Outputs
 
 After running the notebook, results are saved to:
 
@@ -1479,9 +1476,9 @@ After running the notebook, results are saved to:
 
 ---
 
-#### Validation Results Summary
+### Validation Results Summary
 
-##### AE+LSTM vs. Mean Baseline (External)
+#### AE+LSTM vs. Mean Baseline (External)
 
 | Model | RMSE | MAE | R² |
 |---|---|---|---|
@@ -1490,7 +1487,7 @@ After running the notebook, results are saved to:
 
 The neural model clearly learns meaningful AQI patterns and outperforms a naive average prediction.
 
-##### All Models Ranked by External RMSE
+#### All Models Ranked by External RMSE
 
 | Model | External RMSE | External MAE | External R² |
 |---|---|---|---|
@@ -1505,7 +1502,7 @@ The neural model clearly learns meaningful AQI patterns and outperforms a naive 
 
 Traditional models outperform the neural model on this dataset. This is expected: the strong lag features (recent AQI history) are highly linear and are used efficiently by regression-based methods without needing sequence modeling.
 
-##### AE Usefulness (AE+LSTM vs. Raw LSTM)
+#### AE Usefulness (AE+LSTM vs. Raw LSTM)
 
 | Model | External RMSE | External R² |
 |---|---|---|
@@ -1514,7 +1511,7 @@ Traditional models outperform the neural model on this dataset. This is expected
 
 The Autoencoder provides a modest but consistent improvement, confirming that feature compression reduces noise before temporal modeling.
 
-##### Geographic Performance (ZIP Code)
+#### Geographic Performance (ZIP Code)
 
 Best performing ZIP codes (lowest RMSE): `77073`, `77032`, `77060`, `77093`, `77037` (RMSE ≈ 1.81–1.87, R² ≈ 0.945–0.949)
 
@@ -1522,14 +1519,14 @@ Worst performing ZIP codes: `77067`, `77018`, `77086`, `77092`, `77040` (RMSE �
 
 Even the worst ZIP codes remained substantially better than the mean baseline.
 
-##### Timestamp Performance
+#### Timestamp Performance
 
 - **Best timestamp:** `2026-04-12 01:00` (RMSE = 0.1678, MAE = 0.1381)
 - **Worst timestamp:** `2026-04-08 19:00` (RMSE = 14.2509, R² = -4.04)
 
 Evening hours in the first days of the validation window showed the highest errors, likely due to short-term pollution events or distribution shifts not seen during training.
 
-##### Feature Importance
+#### Feature Importance
 
 Across all methods (Spearman correlation, permutation importance, model-based importance), the dominant predictors were recent AQI lag features:
 
@@ -1543,7 +1540,7 @@ Across all methods (Spearman correlation, permutation importance, model-based im
 
 ---
 
-#### Key Definitions
+### Key Definitions
 
 **Internal Validation** — Evaluation on a held-out split of the training dataset (20%). Shows whether the model learned the training distribution but does not prove generalization.
 
@@ -1561,7 +1558,7 @@ Across all methods (Spearman correlation, permutation importance, model-based im
 
 ---
 
-#### Important Notes for Replication
+### Important Notes for Replication
 
 - The unseen validation dataset **must be processed using the exact same column drops, feature selection, scaling assumptions, lag windows, and 24-hour sequence format as the training dataset.** Any deviation will cause a feature mismatch and invalidate the evaluation.
 - Missing values in lag columns are expected and normal — lag features cannot be computed for the first rows of each ZIP code's time series.
@@ -1570,7 +1567,7 @@ Across all methods (Spearman correlation, permutation importance, model-based im
 
 ---
 
-#### Authors & Contributions
+### Authors & Contributions
 
 - **Alfredo Hernandez** — Validation pipeline implementation, external validation evaluation, results analysis
 - **Jose Perla** — Feature importance analysis, report writing, lag feature significance interpretation
