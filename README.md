@@ -3,7 +3,7 @@
 This README text file contains the combined documentation that was written by each team/phase.
 
 
-## Data Collection
+<h1 align="center">Data Collection Phase</h1>
 
 
 ### OVERVIEW
@@ -189,10 +189,11 @@ If a run crashes mid-way, the next run will detect the incomplete state and retr
 - The Open-Meteo forecast endpoint is used (covers recent history + today).
   There is roughly a 5-day lag on the archive endpoint if you switch to that.
 
+<br><br>
 
  
-## Preprocessing
 
+<h2 align="center">Preprocessing</h2>
 
 ### Houston AQ/Weather Preprocessing Pipeline
 
@@ -829,8 +830,10 @@ The current log implementation is useful for seeing how data is processed, but d
 
 A better implementation of this stage would be to merge all of these scripts into one, then create a log which saves checkpoints periodically so the pipeline can restart from a checkpoint is the script fails during the run.
 
+<br><br>
 
-## Exploratory Data Analysis
+
+<h2 align="center">Exploratory Data Analysis Phase</h2>
 
 
 #### Overview
@@ -1064,10 +1067,11 @@ The script generates a Voronoi tessellation map (`14b_houston_aqi_map.png`) show
 Supervised by **Prof. Carlos Ordonez**, University of Houston.
 Claude (Anthropic) used as AI coding assistant.
 
+<br><br>
 
 
 
-## Training
+<h2 align="center">Training Phase</h2>
 
 ### AQI Autoencoder + LSTM Training
 
@@ -1274,10 +1278,11 @@ torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 Otherwise, it runs on CPU.
 
+<br><br>
 
 
 
-## AQ ML Pipeline — Validation Phase
+<h2 align="center">Validation Phase</h2>
 
 **Authors:** Alfredo Hernandez, Jose Perla  
 **Project:** Houston Area Air Quality Index (AQI) Forecasting — Phase 2 Validation
